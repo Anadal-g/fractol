@@ -6,7 +6,7 @@
 #    By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 11:37:35 by anadal-g          #+#    #+#              #
-#    Updated: 2023/11/28 12:20:16 by anadal-g         ###   ########.fr        #
+#    Updated: 2023/11/30 16:40:38 by anadal-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SOURCES = \
 	fractol_init.c \
 	fractol_render.c \
 	fractol_utils.c \
-	fractol.c \
+	map_escale.c \
 	main.c \
 
 OBJS = $(SOURCES:%.c=%.o)
@@ -38,4 +38,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re  

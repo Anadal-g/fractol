@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractal_init.c                                     :+:      :+:    :+:   */
+/*   fractol_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 14:38:50 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/11/28 12:11:00 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:20:33 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	fractal_init(t_fractal *fractal)
 	if (fractal->mlx_connection == NULL)
 		malloc_error();
 	fractal->mlx_window = mlx_new_window(fractal->mlx_connection,
-											WIDTH, EIGHT, fractal->name);
+											WIDTH, HEIGHT, fractal->name);
 	if (fractal->mlx_window == NULL)
 	{
 		mlx_clear_window(fractal->mlx_connection, fractal->mlx_window);
@@ -32,7 +32,7 @@ void	fractal_init(t_fractal *fractal)
 		malloc_error();
 	}
 	fractal->img.img_ptr = mlx_new_image(fractal->mlx_connection,
-											WIDTH, EIGHT);
+											WIDTH, HEIGHT);
 	if (fractal->img.img_ptr)
 	{
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);

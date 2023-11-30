@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:04:12 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/11/28 12:15:41 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:41:18 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,18 @@
 
 
 #define WIDTH	800
-#define EIGHT	800
+#define HEIGHT	800
+
+/*
+ Valores del numero complejo
+*/
+typedef struct s_complex
+{ 
+	//Real
+	double	x;
+	//Imaginario
+	double	y;
+}				t_complex;
 
 
 /*
@@ -61,8 +72,12 @@ int		ft_strncmp(char *s1, char *s2, int n);
 void	putstr_fd(char *s, int fd);
 
 //fractal_init
-//static void	malloc_error(void);
 void	fractal_init(t_fractal *fractal);
 
+//Escalado del mapa
+double	map_escale(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
+
+//render
+//static void	handle_pixel(int x, int y, t_fractal *fractal);
 
 #endif
