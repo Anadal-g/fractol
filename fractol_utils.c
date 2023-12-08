@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:20:14 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/11/27 12:32:27 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:00:38 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,32 @@ void	putstr_fd(char *s, int fd)
 			write(fd, s, 1);
 			putstr_fd(s + 1, fd);
 		} 
+}
+//Como el atoi pero convierte el argumento a long double
+double	atodbl(char *s)
+{
+	long	integer_part;
+	double	fractional_part;
+	double	pow;
+	int		sign;
+
+	integer_part = 0;
+	fractional_part = 0;
+	sign = +1;
+	pow = 1;
+	while ((*s >= 9 && *s <= 13) || 32 == *s)
+		++s;
+	while ('+' == *s || '-' == *s)
+		if ('-' == *s++)
+			sign = -sign;
+	while (*s != '.' && *s)
+		integer_part = (integer_part * 10) + (*s++ - 48);
+	if ('.' == *s)
+		++s;
+	while (*s)
+	{
+		pow /= 10;
+		fractional_part = fractional_part + (*s++ - 48) * pow;
+	}
+	return ((integer_part + fractional_part) * sign);
 }
