@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 14:38:50 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/07 16:27:11 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/12/08 14:29:30 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	data_init(t_fractal *fractal)
 {
 	//Si la hipotenusa de los puntos es mayor a 2 ^ 2
 	fractal->escape = 4;
-	fractal->iteration = 100;
+	fractal->iteration = 1000;
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.0;
@@ -48,7 +48,7 @@ void	fractal_init(t_fractal *fractal)
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
 		// mlx_clear_window(fractal->mlx_connection, fractal->mlx_window);
 		malloc_error();
-		// free(fractal->mlx_connection);
+		//free(fractal->mlx_connection);
 	}
 
 	fractal->img.img_ptr = mlx_new_image(fractal->mlx_connection,
@@ -58,7 +58,7 @@ void	fractal_init(t_fractal *fractal)
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
 		// mlx_clear_window(fractal->mlx_connection, fractal->mlx_window);
 		malloc_error();
-		// free(fractal->mlx_connection);
+		//free(fractal->mlx_connection);
 	}
 	
 	fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr,

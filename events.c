@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:34:22 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/07 16:46:43 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/12/08 14:30:43 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,11 @@ int	close_window(t_fractal *fractal)
 
 int	 key_hooks(int keysym, t_fractal *fractal)
 {
-	//(void)fractal;
 	printf("%d\n", keysym);
 	if (keysym == 53)
 	{
 		
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
-		printf("uwu\n");
 		exit(0);
 	}
 	else if	(keysym == 123)
@@ -54,11 +52,11 @@ int	mouse_hooks(int keysym, int x, int y,t_fractal *fractal)
 	y = y + 0;
 	if	(keysym == 5)
 	{
-		fractal->zoom *= 0.95;
+		fractal->zoom *= 0.9;
 	}
 	else if (keysym == 4)
 	{
-		fractal->zoom *= 1.05;
+		fractal->zoom *= 1.1;
 	}
 	fractal_render(fractal);
 	return (0);

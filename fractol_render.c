@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:20:35 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/07 17:22:05 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/12/08 14:28:31 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static void julia(t_complex *z, t_complex *c, t_fractal *fractal)
 		c->y = z->y;
 	}
 }
-
 static void	handle_pixel(int x, int y, t_fractal *fractal)
 {
 	t_complex	z;
@@ -76,9 +75,34 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	
 	i = 0;
 	//Primera iteracion
-	//  z.x = 0.0;
-	//  z.y = 0.0;
+	 z.x = 0.0;
+	 z.y = 0.0;
 	
+	c.x = (map_escale(x, -2, 2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
+	c.y = (map_escale(y, 2, -2, 0, HEIGHT)* fractal->zoom) + fractal->shift_y;
+	//Veces que vamos a iterar la funcion 
+	while (i < fractal->iteration)
+	{
+		z = suma_num(calc_square(z), c);
+		//Si el valor se escapa
+		if ((z.x * z.x) + (z.y * z.y) > fractal->escape)
+		{
+			color = map_escale(i, TURQUESA_BRILLANTE, AMARILLO_NEON, 0, fractal->iteration);
+			put_pixel(x, y, &fractal->img, color);
+			return ;
+		}
+		i++;
+	}
+	put_pixel(x, y, &fractal->img, LILA);
+}
+static void	handle_pixel_julia(int x, int y, t_fractal *fractal)
+{
+	t_complex	z;
+	t_complex	c;
+	int			i;
+	int			color;
+	
+	i = 0;	
 	z.x = (map_escale(x, -2, 2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
 	z.y = (map_escale(y, 2, -2, 0, HEIGHT)* fractal->zoom) + fractal->shift_y;
 	julia(&z, &c, fractal);
@@ -109,11 +133,18 @@ void	fractal_render(t_fractal *fractal)
 		x = -1;
 		while (++x < WIDTH)
 		{
-			handle_pixel(x, y, fractal); 
+			if (!ft_strncmp(fractal->name, "mandelbrot", 10))
+			{
+				handle_pixel(x, y, fractal); 
+			}
+			else if (!ft_strncmp(fractal->name, "julia", 5))
+			{
+				handle_pixel_julia(x, y, fractal); 
+			}
 		}
 	}
 	mlx_put_image_to_window(fractal->mlx_connection,
 							fractal->mlx_window,
 							fractal->img.img_ptr,
 							0, 0);
-}	
+}

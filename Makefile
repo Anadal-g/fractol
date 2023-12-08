@@ -6,7 +6,7 @@
 #    By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 11:37:35 by anadal-g          #+#    #+#              #
-#    Updated: 2023/12/05 18:54:07 by anadal-g         ###   ########.fr        #
+#    Updated: 2023/12/08 14:17:44 by anadal-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SOURCES = \
 	events.c \
 
 OBJS = $(SOURCES:%.c=%.o)
-CC = gcc -g
+CC = gcc -g -O3 -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror
 MLX = -lmlx -framework OpenGL -framework AppKit
 
