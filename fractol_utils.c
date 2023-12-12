@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:20:14 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/07 17:00:38 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:48:38 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ int	ft_strncmp(char *s1, char *s2, int n)
 		++s2;
 		--n;
 	}
-	return (*s1 - *s2);			
+	return (*s1 - *s2);
 }
 
 void	putstr_fd(char *s, int fd)
 {
 	if (s == NULL || fd < 0)
 		return ;
-		if (*s !=  '\0')
-		{
-			write(fd, s, 1);
-			putstr_fd(s + 1, fd);
-		} 
+	if (*s != '\0')
+	{
+		write(fd, s, 1);
+		putstr_fd(s + 1, fd);
+	}
 }
-//Como el atoi pero convierte el argumento a long double
+
 double	atodbl(char *s)
 {
 	long	integer_part;
