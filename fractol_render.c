@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:20:35 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/12 11:53:27 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:17:18 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	i = 0;
 	z.x = 0.0;
 	z.y = 0.0;
-	c.x = (map_escale(x, -2, 2, WIDTH) * fractal->zoom) + fractal->shift_x;
-	c.y = (map_escale(y, 2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	c.x = (map(x, -2, 2, WIDTH) * fractal->zoom_x) + fractal->shift_x;
+	c.y = (map(y, 2, -2, HEIGHT) * fractal->zoom_x) + fractal->shift_y;
 	while (i < fractal->iteration)
 	{
 		z = suma_num(calc_square(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape)
 		{
-			color = map_escale(i, fractal->color, fractal->color * 10,
+			color = map(i, fractal->color, fractal->color * 10,
 					fractal->iteration);
 			put_pixel(x, y, &fractal->img, color);
 			return ;
@@ -65,15 +65,15 @@ static void	handle_pixel_julia(int x, int y, t_fractal *fractal)
 	int			color;
 
 	i = 0;
-	z.x = (map_escale(x, -2, 2, WIDTH) * fractal->zoom) + fractal->shift_x;
-	z.y = (map_escale(y, 2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	z.x = (map(x, -2, 2, WIDTH) * fractal->zoom_x) + fractal->shift_x;
+	z.y = (map(y, 2, -2, HEIGHT) * fractal->zoom_x) + fractal->shift_y;
 	julia(&z, &c, fractal);
 	while (i < fractal->iteration)
 	{
 		z = suma_num(calc_square(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape)
 		{
-			color = map_escale(i, fractal->color, CORAL, fractal->iteration);
+			color = map(i, fractal->color, CORAL, fractal->iteration);
 			put_pixel(x, y, &fractal->img, color);
 			return ;
 		}
@@ -82,30 +82,27 @@ static void	handle_pixel_julia(int x, int y, t_fractal *fractal)
 	put_pixel(x, y, &fractal->img, LILA);
 }
 
+
 static void	handle_burning_ship(int x, int y, t_fractal *fractal)
 {
 	t_complex	z;
 	t_complex	c;
 	int			iter;
 	int			color;
-	double		xtemp;
+	// double		xtemp;
 
 	iter = 0;
 	z.x = 0.0;
 	z.y = 0.0;
-	c.x = ((((double)x / WIDTH) * 3.5 - 2.5) * fractal->zoom) + fractal->shift_x;
-	c.y = ((((double)y / HEIGHT) * 2.0 - 1.0) * fractal->zoom) - fractal->shift_y;
+	c.x = ((((double)x / WIDTH) * 3.5 - 2.5) * fractal->zoom_x) + fractal->shift_x;
+	c.y = ((((double)y / HEIGHT) * 2.0 - 1.0) * fractal->zoom_x) - fractal->shift_y;
 	while (iter < fractal->iteration)
 	{
-		xtemp = z.x * z.x - z.y * z.y + c.x;
-		z.y = fabs(2 * z.x * z.y) + c.y;
-		z.x = xtemp;
-		z.x = z.x;
-		z.y = z.y;
+		ship(&z, &c);
 		iter++;
 		if ((z.x * z.x) + (z.y * z.y) > 4)
 		{
-			color = map_escale(iter, fractal->color, fractal->color - 5000,
+			color = map(iter, fractal->color, fractal->color - 5000,
 					fractal->iteration);
 			put_pixel(x, y, &fractal->img, color);
 			return ;

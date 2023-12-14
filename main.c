@@ -6,11 +6,22 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:04:23 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/12 11:59:18 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/12/13 12:14:53 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	error_message(void)
+{
+		putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
+		putstr_fd(ERROR_MESSAGE1, STDERR_FILENO);
+		putstr_fd(ERROR_MESSAGE12, STDERR_FILENO);
+		putstr_fd(ERROR_MESSAGE13, STDERR_FILENO);
+		putstr_fd(ERROR_MESSAGE14, STDERR_FILENO);
+		putstr_fd(ERROR_MESSAGE2, STDERR_FILENO);
+		exit(EXIT_FAILURE);
+}
 
 int	main(int ac, char **av)
 {
@@ -36,9 +47,6 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
-		putstr_fd(ERROR_MESSAGE1, STDERR_FILENO);
-		putstr_fd(ERROR_MESSAGE2, STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		error_message();
 	}
 }

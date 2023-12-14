@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:04:12 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/12 11:58:49 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/12/13 12:14:23 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@
 # include <mlx.h>
 
 # define ERROR_MESSAGE "Please enter \n\t\"./fractol mandelbrot\" or \n\t\""
-# define ERROR_MESSAGE1 "./fractol julia <val1> <val2>\"\n"
+# define ERROR_MESSAGE1 "./fractol julia <val1> <val2>\"\n\t"
+# define ERROR_MESSAGE12 "./u can try with this values\"\n\t"
+# define ERROR_MESSAGE13 "./(0.28 , 0),(-0.7, -0.3), (-0.8, 0.156) \"\n\t"
+# define ERROR_MESSAGE14 "./(0.4 , 0.4),(-0.835, -0.2321), (0.35, 0.35) \"\n\t"
 # define ERROR_MESSAGE2 "./fractol ship\"\n"
-# define WIDTH	800
-# define HEIGHT	800
+# define WIDTH	500
+# define HEIGHT	500
 
 # define WHITE 0xFFFFFF
 # define BLACK 0x000000
@@ -86,7 +89,8 @@ typedef struct s_fractal
 	int		iteration;
 	double	shift_x;
 	double	shift_y;
-	double	zoom;
+	double	zoom_x;
+	double	zoom_y;
 	double	julia_x;
 	double	julia_y;
 	double	zoom_ship;
@@ -97,7 +101,7 @@ int			ft_strncmp(char *s1, char *s2, int n);
 void		putstr_fd(char *s, int fd);
 double		atodbl(char *s);
 void		fractal_init(t_fractal *fractal);
-double		map_escale(double unscaled_num, double new_min, double new_max, double old_max);
+double		map(double unscaled_num, double new_min, double new_max, double old_max);
 t_complex	suma_num(t_complex z1, t_complex z2);
 t_complex	calc_square(t_complex z);
 void		fractal_render(t_fractal *fractal);
@@ -106,4 +110,5 @@ int			mouse_hooks(int keysym, int x, int y, t_fractal *fractal);
 int			close_window(t_fractal *fractal);
 void		events_init(t_fractal *fractal);
 void		julia(t_complex *z, t_complex *c, t_fractal *fractal);
+void		ship(t_complex *z, t_complex *c);
 #endif

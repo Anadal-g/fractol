@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:04:15 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/12 11:51:52 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:15:17 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 /*
  *El old_min es 0, asi que podemos quitarlo para reducir una variable.
 */
-double	map_escale(double unscaled_num, double new_min, double new_max,
+double	map(double unscaled_num, double new_min, double new_max,
 					double old_max)
 {
 	return ((new_max - new_min) * (unscaled_num - 0) / (old_max - 0) + new_min);
@@ -56,4 +56,15 @@ void	julia(t_complex *z, t_complex *c, t_fractal *fractal)
 		c->x = z->x;
 		c->y = z->y;
 	}
+}
+
+void	ship(t_complex *z, t_complex *c)
+{
+	double		xtemp;
+
+	xtemp = z->x * z->x - z->y * z->y + c->x;
+	z->y = fabs(2 * z->x * z->y) + c->y;
+	z->x = xtemp;
+	z->x = z->x;
+	z->y = z->y;
 }
