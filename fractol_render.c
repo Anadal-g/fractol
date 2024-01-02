@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:20:35 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/02 13:10:43 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/02 13:33:44 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	i = 0;
 	z.x = 0.0;
 	z.y = 0.0;
-	c.x = (map(x, -2, 2, WIDTH) * fractal->zoom_x) + fractal->shift_x;
-	c.y = (map(y, 2, -2, HEIGHT) * fractal->zoom_x) + fractal->shift_y;
-	while (i < fractal->iteration)
+	c.x = (map(x, -2, 2, WIDTH) * fractal->zmx) + fractal->shftx;
+	c.y = (map(y, 2, -2, HEIGHT) * fractal->zmx) + fractal->shfty;
+	while (i < fractal->iter)
 	{
 		z = suma_num(calc_square(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape)
 		{
 			color = map(i, fractal->color, fractal->color * 10,
-					fractal->iteration);
+					fractal->iter);
 			put_pixel(x, y, &fractal->img, color);
 			return ;
 		}
@@ -65,15 +65,15 @@ static void	handle_pixel_julia(int x, int y, t_fractal *fractal)
 	int			color;
 
 	i = 0;
-	z.x = (map(x, -2, 2, WIDTH) * fractal->zoom_x) + fractal->shift_x;
-	z.y = (map(y, 2, -2, HEIGHT) * fractal->zoom_x) + fractal->shift_y;
+	z.x = (map(x, -2, 2, WIDTH) * fractal->zmx) + fractal->shftx;
+	z.y = (map(y, 2, -2, HEIGHT) * fractal->zmx) + fractal->shfty;
 	julia(&z, &c, fractal);
-	while (i < fractal->iteration)
+	while (i < fractal->iter)
 	{
 		z = suma_num(calc_square(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape)
 		{
-			color = map(i, fractal->color, fractal->color * 6, fractal->iteration);
+			color = map(i, fractal->color, fractal->color * 6, fractal->iter);
 			put_pixel(x, y, &fractal->img, color);
 			return ;
 		}
@@ -92,16 +92,16 @@ static void	handle_burning_ship(int x, int y, t_fractal *fractal)
 	iter = 0;
 	z.x = 0.0;
 	z.y = 0.0;
-	c.x = ((((double)x / WIDTH) * 3.5 - 2.5) * fractal->zoom_x) + fractal->shift_x;
-	c.y = ((((double)y / HEIGHT) * 2.0 - 1.0) * fractal->zoom_x) - fractal->shift_y;
-	while (iter < fractal->iteration)
+	c.x = ((((double)x / WIDTH) * 3.5 - 2.5) * fractal->zmx) + fractal->shftx;
+	c.y = ((((double)y / HEIGHT) * 2.0 - 1.0) * fractal->zmx) - fractal->shfty;
+	while (iter < fractal->iter)
 	{
 		ship(&z, &c);
 		iter++;
 		if ((z.x * z.x) + (z.y * z.y) > 4)
 		{
 			color = map(iter, fractal->color, fractal->color - 5000,
-					fractal->iteration);
+					fractal->iter);
 			put_pixel(x, y, &fractal->img, color);
 			return ;
 		}

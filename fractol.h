@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:04:12 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/02 13:05:14 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/02 13:30:41 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ typedef struct s_fractal
 	t_img	img;
 	double	escape;
 	int		color;
-	int		iteration;
+	int		iter;
 	int		error;
-	double	shift_x;
-	double	shift_y;
-	double	zoom_x;
-	double	zoom_y;
+	double	shftx;
+	double	shfty;
+	double	zmx;
+	double	zmy;
 	double	julia_x;
 	double	julia_y;
 	double	zoom_ship;
@@ -102,7 +102,7 @@ int			ft_strncmp(char *s1, char *s2, int n);
 void		putstr_fd(char *s, int fd);
 double		ft_atodbl(char *str, t_fractal *fractal);
 void		fractal_init(t_fractal *fractal);
-double		map(double unscaled_num, double new_min, double new_max, double old_max);
+double		map(double uns_num, double new_min, double new_max, double old_max);
 t_complex	suma_num(t_complex z1, t_complex z2);
 t_complex	calc_square(t_complex z);
 void		fractal_render(t_fractal *fractal);

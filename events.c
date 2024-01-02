@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:34:22 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/02 13:12:35 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/02 13:31:44 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ static void	zoom_in(t_fractal *fractal, int x, int y)
 
 	aux_x = x;
 	aux_y = y;
-	fractal->zoom_x *= 0.9;
-	fractal->zoom_y *= 0.9;
+	fractal->zmx *= 0.9;
+	fractal->zmy *= 0.9;
 	if (!ft_strncmp(fractal->name, "ship", 4))
 	{
-		fractal->shift_x += map(aux_x, -fractal->zoom_x, fractal->zoom_y, WIDTH) * 0.1995;
-		fractal->shift_y += map(aux_y, fractal->zoom_x, -fractal->zoom_y, WIDTH) * 0.1995;
+		fractal->shftx += map(aux_x, -fractal->zmx, fractal->zmy, WIDTH) * 0.19;
+		fractal->shfty += map(aux_y, fractal->zmx, -fractal->zmy, WIDTH) * 0.19;
 	}
 	else
 	{
-		fractal->shift_x += map(aux_x, -fractal->zoom_x, fractal->zoom_y, WIDTH) * 0.1995;
-		fractal->shift_y += map(aux_y, fractal->zoom_x, -fractal->zoom_y, WIDTH) * 0.1995;
+		fractal->shftx += map(aux_x, -fractal->zmx, fractal->zmy, WIDTH) * 0.19;
+		fractal->shfty += map(aux_y, fractal->zmx, -fractal->zmy, WIDTH) * 0.19;
 	}
 }
 
@@ -46,17 +46,17 @@ static void	zoom_out(t_fractal *fractal, int x, int y)
 
 	aux_x = x;
 	aux_y = y;
-	fractal->zoom_x *= 1.1;
-	fractal->zoom_y *= 1.1;
+	fractal->zmx *= 1.1;
+	fractal->zmy *= 1.1;
 	if (!ft_strncmp(fractal->name, "ship", 4))
 	{
-		fractal->shift_x += map(aux_x, -fractal->zoom_x, fractal->zoom_y, WIDTH) * 0.1995;
-		fractal->shift_y += map(aux_y, -fractal->zoom_x, fractal->zoom_y, WIDTH) * 0.1995;
+		fractal->shftx += map(aux_x, -fractal->zmx, fractal->zmy, WIDTH) * 0.19;
+		fractal->shfty += map(aux_y, -fractal->zmx, fractal->zmy, WIDTH) * 0.19;
 	}
 	else
 	{
-		fractal->shift_x += map(aux_x, -fractal->zoom_x, fractal->zoom_y, WIDTH) * 0.1995;
-		fractal->shift_y += map(aux_y, fractal->zoom_x, -fractal->zoom_y, WIDTH) * 0.1995;
+		fractal->shftx += map(aux_x, -fractal->zmx, fractal->zmy, WIDTH) * 0.19;
+		fractal->shfty += map(aux_y, fractal->zmx, -fractal->zmy, WIDTH) * 0.19;
 	}
 }
 
@@ -68,17 +68,17 @@ int	key_hooks(int keysym, t_fractal *fractal)
 		exit(0);
 	}
 	else if (keysym == 123)
-		fractal->shift_x += (0.5 * fractal->zoom_x);
+		fractal->shftx += (0.5 * fractal->zmx);
 	else if (keysym == 124)
-		fractal->shift_x -= (0.5 * fractal->zoom_x);
+		fractal->shftx -= (0.5 * fractal->zmx);
 	else if (keysym == 126)
-		fractal->shift_y -= (0.5 * fractal->zoom_x);
+		fractal->shfty -= (0.5 * fractal->zmx);
 	else if (keysym == 125)
-		fractal->shift_y += (0.5 * fractal->zoom_x);
+		fractal->shfty += (0.5 * fractal->zmx);
 	else if (keysym == 69)
-		fractal->iteration += 10;
+		fractal->iter += 10;
 	else if (keysym == 78)
-		fractal->iteration -= 10;
+		fractal->iter -= 10;
 	else if (keysym == 13)
 		fractal->color += 1000;
 	fractal_render(fractal);
