@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:04:12 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/13 12:14:23 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/02 13:05:14 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_fractal
 	double	escape;
 	int		color;
 	int		iteration;
+	int		error;
 	double	shift_x;
 	double	shift_y;
 	double	zoom_x;
@@ -99,7 +100,7 @@ typedef struct s_fractal
 
 int			ft_strncmp(char *s1, char *s2, int n);
 void		putstr_fd(char *s, int fd);
-double		atodbl(char *s);
+double		ft_atodbl(char *str, t_fractal *fractal);
 void		fractal_init(t_fractal *fractal);
 double		map(double unscaled_num, double new_min, double new_max, double old_max);
 t_complex	suma_num(t_complex z1, t_complex z2);
@@ -111,4 +112,5 @@ int			close_window(t_fractal *fractal);
 void		events_init(t_fractal *fractal);
 void		julia(t_complex *z, t_complex *c, t_fractal *fractal);
 void		ship(t_complex *z, t_complex *c);
+int			ft_isdigit(int c);
 #endif

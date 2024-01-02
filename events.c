@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:34:22 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/13 12:00:19 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/02 13:12:35 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	close_window(t_fractal *fractal)
 	mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
 	exit(EXIT_SUCCESS);
 }
+
 static void	zoom_in(t_fractal *fractal, int x, int y)
 {
 	int	aux_x;
@@ -29,7 +30,7 @@ static void	zoom_in(t_fractal *fractal, int x, int y)
 	if (!ft_strncmp(fractal->name, "ship", 4))
 	{
 		fractal->shift_x += map(aux_x, -fractal->zoom_x, fractal->zoom_y, WIDTH) * 0.1995;
-		fractal->shift_y += map(aux_y, -fractal->zoom_x, fractal->zoom_y, WIDTH) * 0.1995;
+		fractal->shift_y += map(aux_y, fractal->zoom_x, -fractal->zoom_y, WIDTH) * 0.1995;
 	}
 	else
 	{
@@ -37,7 +38,7 @@ static void	zoom_in(t_fractal *fractal, int x, int y)
 		fractal->shift_y += map(aux_y, fractal->zoom_x, -fractal->zoom_y, WIDTH) * 0.1995;
 	}
 }
-	
+
 static void	zoom_out(t_fractal *fractal, int x, int y)
 {
 	int	aux_x;

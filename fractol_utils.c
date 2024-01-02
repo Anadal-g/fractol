@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:20:14 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/12 11:48:38 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/02 13:12:03 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,51 @@ void	putstr_fd(char *s, int fd)
 	}
 }
 
-double	atodbl(char *s)
+static double	ft_atodbl2(char *str, double nb)
 {
-	long	integer_part;
-	double	fractional_part;
-	double	pow;
-	int		sign;
+	double	dec;
+	double	aux;
 
-	integer_part = 0;
-	fractional_part = 0;
-	sign = +1;
-	pow = 1;
-	while ((*s >= 9 && *s <= 13) || 32 == *s)
-		++s;
-	while ('+' == *s || '-' == *s)
-		if ('-' == *s++)
-			sign = -sign;
-	while (*s != '.' && *s)
-		integer_part = (integer_part * 10) + (*s++ - 48);
-	if ('.' == *s)
-		++s;
-	while (*s)
+	dec = 10;
+	while (*str >= '0' && *str <= '9')
 	{
-		pow /= 10;
-		fractional_part = fractional_part + (*s++ - 48) * pow;
+		nb = ((*str - '0') + (nb * 10));
+		str++;
 	}
-	return ((integer_part + fractional_part) * sign);
+	if (*str == '.')
+	{
+		dec = 10;
+		str++;
+		while (*str >= '0' && *str <= '9')
+		{
+			aux = ((*str - '0'));
+			nb = nb + (aux / dec);
+			dec *= 10;
+			str++;
+		}
+	}
+	return (nb);
+}
+
+double	ft_atodbl(char *str, t_fractal *fractal)
+{
+	double	nb;
+	int		sing;
+
+	nb = 0;
+	sing = 0;
+	while ((*str <= 13 && *str >= 9) || *str == 32)
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sing = 1;
+		str++;
+	}
+	nb = ft_atodbl2(str, nb);
+	if (*str < '0' || *str > '9')
+		fractal->error = 1;
+	if (sing == 1)
+		nb = nb * -1;
+	return (nb);
 }

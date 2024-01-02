@@ -6,14 +6,12 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:04:15 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/12 15:15:17 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/02 12:34:52 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-/*
- *El old_min es 0, asi que podemos quitarlo para reducir una variable.
-*/
+
 double	map(double unscaled_num, double new_min, double new_max,
 					double old_max)
 {
@@ -29,12 +27,6 @@ t_complex	suma_num(t_complex z1, t_complex z2)
 	return (result);
 }
 
-/*
- *Calcular cuadrado
-  * z = z^2 + c
- *X = (x^2 - y^2)
- *Y = 2 * x * y
-*/
 t_complex	calc_square(t_complex z)
 {
 	t_complex	result;

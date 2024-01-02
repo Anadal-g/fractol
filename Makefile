@@ -6,7 +6,7 @@
 #    By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 11:37:35 by anadal-g          #+#    #+#              #
-#    Updated: 2023/12/08 14:17:44 by anadal-g         ###   ########.fr        #
+#    Updated: 2024/01/02 12:41:33 by anadal-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SOURCES = \
 	map_escale.c \
 	main.c \
 	events.c \
+	ft_isdigit.c \
 
 OBJS = $(SOURCES:%.c=%.o)
 CC = gcc -g -O3 -fsanitize=address

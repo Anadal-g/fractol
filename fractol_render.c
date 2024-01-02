@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:20:35 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/12 15:17:18 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/02 13:10:43 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,14 @@ static void	handle_pixel_julia(int x, int y, t_fractal *fractal)
 		z = suma_num(calc_square(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape)
 		{
-			color = map(i, fractal->color, CORAL, fractal->iteration);
+			color = map(i, fractal->color, fractal->color * 6, fractal->iteration);
 			put_pixel(x, y, &fractal->img, color);
 			return ;
 		}
 		i++;
 	}
-	put_pixel(x, y, &fractal->img, LILA);
+	put_pixel(x, y, &fractal->img, BLACK);
 }
-
 
 static void	handle_burning_ship(int x, int y, t_fractal *fractal)
 {
@@ -89,7 +88,6 @@ static void	handle_burning_ship(int x, int y, t_fractal *fractal)
 	t_complex	c;
 	int			iter;
 	int			color;
-	// double		xtemp;
 
 	iter = 0;
 	z.x = 0.0;

@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 14:38:50 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/13 12:01:53 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/02 12:15:57 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	data_init(t_fractal *fractal)
 	fractal->zoom_x = 1.0;
 	fractal->zoom_y = 1.0;
 	fractal->zoom_ship = 1.0;
+	fractal->error = 0;
 	fractal->color = WHITE;
 }
 
