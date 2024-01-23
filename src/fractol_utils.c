@@ -6,11 +6,11 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:20:14 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/02 13:12:03 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/23 12:23:07 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {

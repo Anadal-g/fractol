@@ -6,11 +6,11 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 14:38:50 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/02 13:31:55 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/23 12:22:57 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
 static void	malloc_error(void)
 {

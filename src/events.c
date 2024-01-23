@@ -6,11 +6,11 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:34:22 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/02 13:31:44 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/23 12:22:54 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
 int	close_window(t_fractal *fractal)
 {

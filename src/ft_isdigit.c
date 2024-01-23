@@ -6,9 +6,11 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:07:38 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/09/20 11:04:11 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/23 12:23:43 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fractol.h"
 
 int	ft_isdigit(int c)
 {

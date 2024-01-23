@@ -6,14 +6,13 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:04:15 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/02 13:18:05 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/23 12:23:24 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
-double	map(double uns_num, double new_min, double new_max,
-					double old_max)
+double	map(double uns_num, double new_min, double new_max, double old_max)
 {
 	return ((new_max - new_min) * (uns_num - 0) / (old_max - 0) + new_min);
 }
