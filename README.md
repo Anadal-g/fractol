@@ -6,7 +6,7 @@ One of the first graphical projects at 42 school, fract-ol generates beautiful f
 
 ## Screenshots
 
-![App Screenshot](https://es.wikipedia.org/wiki/Conjunto_de_Mandelbrot#/media/Archivo:Mandelbrot0.jpg)
+![Fract-ol](https://github.com/Anadal-g/fractol/blob/main/screenshot/Screen%20Shot%202024-02-28%20at%203.07.12%20PM.png)
 
 
 ## Installing and Compiling Fract-ol
