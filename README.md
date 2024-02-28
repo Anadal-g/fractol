@@ -52,10 +52,12 @@ While Fractol is running, the following set of controls are available:
 ## Screeshots
 
 Mandelbrot set
-
+![Fract-ol mandelbrot](https://github.com/Anadal-g/fractol/blob/main/screenshot/Screen%20Shot%202024-02-28%20at%2012.23.03%20PM.png)
 
 Julia set
-
-
+![Fract-ol julia](https://github.com/Anadal-g/fractol/blob/main/screenshot/Screen%20Shot%202024-02-28%20at%2012.51.01%20PM.png)
+Another Julia set
+![Fract-ol julia2](https://github.com/Anadal-g/fractol/blob/main/screenshot/Screen%20Shot%202024-02-28%20at%2012.55.01%20PM.png)
 
 Burning ship
+![Fract-ol ship](https://github.com/Anadal-g/fractol/blob/main/screenshot/Screen%20Shot%202024-02-28%20at%2012.51.39%20PM.png)
