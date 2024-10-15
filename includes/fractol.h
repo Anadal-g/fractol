@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:04:12 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/02/28 11:21:11 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/07/01 13:05:25 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,15 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
-# include <mlx.h>
-
+# include "../minilibx-linux/mlx.h"
 # define ERROR_MESSAGE "Please enter \n\t\"./fractol mandelbrot\" or \n\t\""
 # define ERROR_MESSAGE1 "./fractol julia <val1> <val2>\"\n\t"
 # define ERROR_MESSAGE12 "./u can try with this values\"\n\t"
 # define ERROR_MESSAGE13 "./(0.28 , 0),(-0.7, -0.3), (-0.8, 0.156) \"\n\t"
 # define ERROR_MESSAGE14 "./(0.4 , 0.4),(-0.835, -0.2321), (0.35, 0.35) \"\n\t"
 # define ERROR_MESSAGE2 "./fractol ship\"\n"
-# define WIDTH	500
-# define HEIGHT	500
+# define WIDTH	800
+# define HEIGHT	800
 
 # define WHITE 0xFFFFFF
 # define BLACK 0x000000

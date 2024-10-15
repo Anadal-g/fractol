@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 14:38:50 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/02/28 15:08:34 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/10/15 18:50:32 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	events_init(t_fractal *fractal)
 {
 	mlx_key_hook(fractal->mlx_window, key_hooks, fractal);
 	mlx_mouse_hook(fractal->mlx_window, mouse_hooks, fractal);
+	mlx_hook(fractal->mlx_window, 17, 0, close_window, &fractal);
 	mlx_loop(fractal->mlx_connection);
 }
 

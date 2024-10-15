@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:34:22 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/23 12:22:54 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/10/15 18:56:07 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,24 +62,24 @@ static void	zoom_out(t_fractal *fractal, int x, int y)
 
 int	key_hooks(int keysym, t_fractal *fractal)
 {
-	if (keysym == 53)
+	if (keysym == 65307)
 	{
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
 		exit(0);
 	}
-	else if (keysym == 123)
+	else if (keysym == 97 || keysym == 65361)
 		fractal->shftx += (0.5 * fractal->zmx);
-	else if (keysym == 124)
+	else if (keysym == 100 || keysym == 65363)
 		fractal->shftx -= (0.5 * fractal->zmx);
-	else if (keysym == 126)
+	else if (keysym == 119 || keysym == 65362)
 		fractal->shfty -= (0.5 * fractal->zmx);
-	else if (keysym == 125)
+	else if (keysym == 115 || keysym == 65364)
 		fractal->shfty += (0.5 * fractal->zmx);
-	else if (keysym == 69)
+	else if (keysym == 51)
 		fractal->iter += 10;
-	else if (keysym == 78)
+	else if (keysym == 50)
 		fractal->iter -= 10;
-	else if (keysym == 13)
+	else if (keysym == 49)
 		fractal->color += 1000;
 	fractal_render(fractal);
 	return (0);
@@ -87,16 +87,10 @@ int	key_hooks(int keysym, t_fractal *fractal)
 
 int	mouse_hooks(int keysym, int x, int y, t_fractal *fractal)
 {
-	(void)x;
-	(void)y;
-	if (keysym == 4)
-	{
+	if (keysym == 5)
 		zoom_out(fractal, x, y);
-	}
-	else if (keysym == 5)
-	{
+	else if (keysym == 4)
 		zoom_in(fractal, x, y);
-	}
 	fractal_render(fractal);
 	return (0);
 }
